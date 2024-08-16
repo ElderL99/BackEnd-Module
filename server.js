@@ -1,28 +1,13 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const connectDB = require('./src/DB'); // Asegúrate de que la ruta sea correcta
 
 const app = express();
-const port = 8080;
 
-// Middleware
-app.use(bodyParser.json());
+// Conectar a la base de datos
+connectDB();
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/devto', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log(err));
+const PORT = process.env.PORT || 5000;
 
-// Models
-const User = require('./models/User');
-const Article = require('./models/Article');
-
-// Routes
-app.use('/api/users', require('./routes/users'));
-app.use('/api/articles', require('./routes/articles'));
-
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
