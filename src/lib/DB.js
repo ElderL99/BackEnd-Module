@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const usr = "adanlugo";
 const password = "Papasconqueso";
 const clusterUrl = "kod-01.dwjstu1.mongodb.net";
-const dbName = "Devto"; // Reemplaza con el nombre de tu base de datos
+const dbName = "Devto"; 
 
 const connectDB = async () => {
     try {
@@ -11,7 +11,7 @@ const connectDB = async () => {
         console.log('MongoDB connected');
     } catch (err) {
         console.error(err);
-        process.exit(1); // Exit process with failure
+        process.exit(1); 
     }
 };
 
